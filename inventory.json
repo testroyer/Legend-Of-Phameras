@@ -14,7 +14,9 @@
         },
         "Simon": {
             "Health": 100,
-            "Body": {},
+            "Body": {
+                
+            },
             "Inventory": {
                 "Coins": 50
             }

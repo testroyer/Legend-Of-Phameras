@@ -87,10 +87,19 @@ while True:
 
     #work   -> Gives you random or entered amount of coins. A value between 1 and 20. maybe we can add a delay or something like that.
 
-    elif the_input.startswith(">wear"):             #Statement for weadable. Thinking of changing to >equip
+    #Equips an item. I must add a property which makes an item equipable or not.
+    elif the_input.startswith(">equip"):             
         try:
-            wearable = the_input[6:]
+            wearable = the_input[7:]
             character.equip_item(wearable)
+        except KeyError:
+            print("<Please select a valid wearable")
+
+    #Same thing. Unequips an item. I must add a property which makes an item equipable or not.
+    elif the_input.startswith(">unequip"):             
+        try:
+            wearable = the_input[9:]
+            character.unequip_item(wearable)
         except KeyError:
             print("<Please select a valid wearable")
 
