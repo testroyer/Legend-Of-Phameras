@@ -9,7 +9,6 @@
 
 """
 def ToDo():
-    !un-equip armor
     -work()
     -delete character()
     -fight()
