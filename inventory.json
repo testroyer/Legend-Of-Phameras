@@ -2,22 +2,27 @@
     {
         "Larry": {
             "Health": 100,
-            "Inventory":{
+            "Body": {
+                
+            },
+            "Inventory": {
                 "Sword": 40,
                 "Food": 20,
-                "Coins": 0
+                "Coins": 0,
+                "Armor": 20
             }
-            
         },
         "Simon": {
             "Health": 100,
-            "Inventory":{
+            "Body": {},
+            "Inventory": {
                 "Coins": 50
             }
         },
         "Jason": {
-            "Health" : 100,
-            "Inventory" :{
+            "Health": 100,
+            "Body": {},
+            "Inventory": {
                 "Coins": 0
             }
         }

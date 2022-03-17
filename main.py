@@ -9,13 +9,13 @@
 
 """
 def ToDo():
+    !un-equip armor
     -work()
     -delete character()
     -fight()
     -expand shops
-    -armor
+    -max health
     -attack/armor/health value
-    -character armor
     -a shop catalog would be useful
     -what if it starts without a character ???
     -shop stock ???
@@ -39,14 +39,14 @@ with open("shop.json" , "r") as f:
 while True:        
     try:
         selected_character = input("<Select Character: \n>")   
-        player , inventory = data[0][selected_character] , data[0][selected_character]["Inventory"]
+        player , inventory , player_body = data[0][selected_character] , data[0][selected_character]["Inventory"] ,data[0][selected_character]["Body"]
         
         break
     except KeyError:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health"]      
+command_array = [">list" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnescasary
 def json_saver(json_string):                                
@@ -54,7 +54,7 @@ def json_saver(json_string):
             f.write(json_string)
     
 
-character = Character(player = player , player_inventory = inventory)
+character = Character(player = player , player_inventory = inventory , player_body=player_body)
 print("<Boot succesfull")
 
 #I believe I can make this one function and then import it
@@ -67,6 +67,9 @@ while True:
         for commands in sorted(command_array):
             print(commands)
 
+    elif the_input == ">list body":
+        character.list_body()
+
     #It does what it does, lists.
     elif the_input  == ">list":               
         character.list_inventory()    
@@ -74,13 +77,22 @@ while True:
     elif the_input.startswith(">select"):                   #Created for character selection. MAYBE: Write a function that lists characters insted of inventory. 
         try:
             character_selection = the_input[8:]
-            inventory = data[0][character_selection]
+            inventory = data[0][character_selection]["Inventory"]
+            player = data[0][character_selection]
+            player_body = data[0][character_selection]["Body"]
             character = Character(player_inventory=inventory)
             print(f"<{character_selection} selected")
         except KeyError:
             print("<Please select a valid character name")
 
     #work   -> Gives you random or entered amount of coins. A value between 1 and 20. maybe we can add a delay or something like that.
+
+    elif the_input.startswith(">wear"):             #Statement for weadable. Thinking of changing to >equip
+        try:
+            wearable = the_input[6:]
+            character.equip_item(wearable)
+        except KeyError:
+            print("<Please select a valid wearable")
 
     #health -> displays health
     elif the_input == ">health":
@@ -109,13 +121,17 @@ while True:
         new_character = the_input[15:]
         data[0][new_character] = {
             "Health" : 100,
+            "Body":{
+                
+            },
             "Inventory" : {
                 "Coins" : 0
             }   
             
         }
         inventory = data[0][new_character]["Inventory"]
-        character = Character(player = player ,player_inventory = inventory)
+        player_body = data[0][new_character]["Body"]    #I made a body for wearing armor
+        character = Character(player = player ,player_inventory = inventory , player_body=player_body)
         json_string = json.dumps(data , indent=4)
         json_saver(json_string=json_string)
         print("<Character created succesfully")
