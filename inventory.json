@@ -1,0 +1,25 @@
+[
+    {
+        "Larry": {
+            "Health": 100,
+            "Inventory":{
+                "Sword": 40,
+                "Food": 20,
+                "Coins": 0
+            }
+            
+        },
+        "Simon": {
+            "Health": 100,
+            "Inventory":{
+                "Coins": 50
+            }
+        },
+        "Jason": {
+            "Health" : 100,
+            "Inventory" :{
+                "Coins": 0
+            }
+        }
+    }
+]
