@@ -30,7 +30,7 @@ class Character():
     def item_info(self , item):
         print(self.player_inventory[item])
 
-    #displays name.
+    #displays name. Probably broken
     def character_name(self):
         return print(self.player_inventory)
     
@@ -60,6 +60,8 @@ class Character():
     
     #Lists what is on you
     def list_body(self):
+        all_items = []
         for items in self.player_body:
-            print(items)
+            all_items.append(items)
+        return all_items
 

@@ -67,7 +67,11 @@ while True:
             print(commands)
 
     elif the_input == ">list body":
-        character.list_body()
+        if character.list_body() == []:
+            print("<There is nothing on body")
+        else:
+            for item in character.list_body():
+                print(item)
 
     #It does what it does, lists.
     elif the_input  == ">list":               
@@ -91,6 +95,7 @@ while True:
         try:
             wearable = the_input[7:]
             character.equip_item(wearable)
+            print(f"<Equipped {wearable}")
         except KeyError:
             print("<Please select a valid wearable")
 
@@ -99,6 +104,7 @@ while True:
         try:
             wearable = the_input[9:]
             character.unequip_item(wearable)
+            print(f"<Unequipped {wearable}")
         except KeyError:
             print("<Please select a valid wearable")
 
