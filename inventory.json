@@ -1,31 +1,26 @@
 [
     {
         "Larry": {
-            "Health": 100,
+            "Health": 120,
             "Body": {
-                
+                "Armor": [
+                    20,
+                    1
+                ]
             },
             "Inventory": {
-                "Sword": 40,
-                "Food": 20,
-                "Coins": 0,
-                "Armor": 20
-            }
-        },
-        "Simon": {
-            "Health": 100,
-            "Body": {
-                
-            },
-            "Inventory": {
-                "Coins": 50
-            }
-        },
-        "Jason": {
-            "Health": 100,
-            "Body": {},
-            "Inventory": {
-                "Coins": 0
+                "Sword": [
+                    40,
+                    1
+                ],
+                "Food": [
+                    20,
+                    0
+                ],
+                "Coins": [
+                    90,
+                    0
+                ]
             }
         }
     }

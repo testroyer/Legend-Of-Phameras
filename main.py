@@ -17,7 +17,8 @@ def ToDo():
     -attack/armor/health value
     -a shop catalog would be useful
     -what if it starts without a character ???
-    -shop stock ???
+    -shop stock ??
+    -eatable?
 """
 
 #Imports
@@ -45,7 +46,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
+command_array = [">list" , ">help", "equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnescasary
 def json_saver(json_string):                                
@@ -74,8 +75,11 @@ while True:
                 print(item)
 
     #It does what it does, lists.
-    elif the_input  == ">list":               
-        character.list_inventory()    
+    elif the_input  == ">list":
+        if character.character_inventory() != []:            
+            character.list_inventory()
+        else:
+            print("<You have nothing.")
 
     elif the_input.startswith(">select"):                   #Created for character selection. MAYBE: Write a function that lists characters insted of inventory. 
         try:
@@ -83,7 +87,7 @@ while True:
             inventory = data[0][character_selection]["Inventory"]
             player = data[0][character_selection]
             player_body = data[0][character_selection]["Body"]
-            character = Character(player_inventory=inventory)
+            character = Character(player=player,player_inventory=inventory, player_body=player_body)
             print(f"<{character_selection} selected")
         except KeyError:
             print("<Please select a valid character name")
@@ -94,8 +98,12 @@ while True:
     elif the_input.startswith(">equip"):             
         try:
             wearable = the_input[7:]
-            character.equip_item(wearable)
-            print(f"<Equipped {wearable}")
+            player_inventory = character.character_inventory()
+            if player_inventory[wearable][1] == 1:
+                character.equip_item(wearable)
+                print(f"<Equipped {wearable}")
+            else:
+                print("<Please you can't equip this")
         except KeyError:
             print("<Please select a valid wearable")
 
@@ -103,8 +111,12 @@ while True:
     elif the_input.startswith(">unequip"):             
         try:
             wearable = the_input[9:]
-            character.unequip_item(wearable)
-            print(f"<Unequipped {wearable}")
+            player_body = character.character_body()
+            if player_body[wearable][1] == 1:
+                character.unequip_item(wearable)
+                print(f"<Unequipped {wearable}")
+            else:
+                print("<Please you can't un-equip this")
         except KeyError:
             print("<Please select a valid wearable")
 
@@ -121,9 +133,10 @@ while True:
         try:
             the_item_to_be_bought = the_input[5:]
             character_inventory = character.character_inventory()
-            if character_inventory["Coins"] > shop[0][the_item_to_be_bought][0]:
-                character.pick_item(the_item_to_be_bought , shop[0][the_item_to_be_bought][1])
-                character_inventory["Coins"] -= shop[0][the_item_to_be_bought][0]
+            if character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
+                values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
+                character.pick_item(the_item_to_be_bought , values )
+                character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
         except KeyError:
             print("<That item doesn't exists at any one of our shops.")
 
@@ -139,7 +152,7 @@ while True:
                 
             },
             "Inventory" : {
-                "Coins" : 0
+                "Coins" : [0 , 0]
             }   
             
         }

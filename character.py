@@ -38,6 +38,10 @@ class Character():
     def character_inventory(self):
         return self.player_inventory
 
+    #Returns player body 
+    def character_body(self):
+        return self.player_body
+
     #Hurts himself
     def harm(self , damage):
         self.player["Health"] -= damage
@@ -49,13 +53,13 @@ class Character():
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
     def equip_item(self , item):
         self.player_body[item] = self.player_inventory[item]
-        self.player["Health"] += self.player_inventory[item]
+        self.player["Health"] += self.player_inventory[item][0]
         self.player_inventory.pop(item)
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
     def unequip_item(self , item):
         self.player_inventory[item] = self.player_body[item]
-        self.player["Health"] -= self.player_inventory[item]
+        self.player["Health"] -= self.player_inventory[item][0]
         self.player_body.pop(item)
     
     #Lists what is on you
