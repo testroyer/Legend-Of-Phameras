@@ -12,13 +12,12 @@ def ToDo():
     -work()
     -delete character()
     -fight()
-    -expand shops
     -max health
-    -attack/armor/health value
     -a shop catalog would be useful
     -what if it starts without a character ???
     -shop stock ??
-    -eatable?
+    -make one armor equipable.
+    -make some changes to the 
 """
 
 #Imports
