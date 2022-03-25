@@ -5,7 +5,7 @@
             "Body": {
                 "Armor": [
                     20,
-                    1
+                    2
                 ]
             },
             "Inventory": {
@@ -19,7 +19,17 @@
                 ],
                 "Coins": [
                     90,
-                    0
+                    21
+                ]
+            }
+        },
+        "Amy": {
+            "Health": 100,
+            "Body": {},
+            "Inventory": {
+                "Coins": [
+                    0,
+                    21
                 ]
             }
         }

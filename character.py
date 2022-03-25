@@ -51,6 +51,7 @@ class Character():
         return self.player["Health"]
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
+    #Will ad the values for wearable, eatable, fightable.
     def equip_item(self , item):
         self.player_body[item] = self.player_inventory[item]
         self.player["Health"] += self.player_inventory[item][0]

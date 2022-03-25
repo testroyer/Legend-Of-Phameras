@@ -58,7 +58,7 @@ character = Character(player = player , player_inventory = inventory , player_bo
 print("<Boot succesfull")
 
 #I believe I can make this one function and then import it
-#Checks input every time. I find it bit dump to make this this way
+#Checks input every time. I find it bit dumb to make this this way
 while True:                 
     the_input = input()
 
@@ -99,7 +99,7 @@ while True:
         try:
             wearable = the_input[7:]
             player_inventory = character.character_inventory()
-            if player_inventory[wearable][1] == 1:
+            if player_inventory[wearable][1] == 2:
                 character.equip_item(wearable)
                 print(f"<Equipped {wearable}")
             else:
@@ -112,7 +112,7 @@ while True:
         try:
             wearable = the_input[9:]
             player_body = character.character_body()
-            if player_body[wearable][1] == 1:
+            if player_body[wearable][1] == 2:
                 character.unequip_item(wearable)
                 print(f"<Unequipped {wearable}")
             else:
@@ -152,10 +152,11 @@ while True:
                 
             },
             "Inventory" : {
-                "Coins" : [0 , 0]
+                "Coins" : [0 , 21]
             }   
             
         }
+        player = data[0][new_character]
         inventory = data[0][new_character]["Inventory"]
         player_body = data[0][new_character]["Body"]    #I made a body for wearing armor
         character = Character(player = player ,player_inventory = inventory , player_body=player_body)
