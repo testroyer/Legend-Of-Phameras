@@ -121,11 +121,16 @@ while True:
 
     #health -> displays health
     elif the_input == ">health":
-        print(character.display_health())
+        print(f"Health is {character.display_health()}")
 
     #self_harm -> Self harm made for testing
-    elif the_input == ">selfharm":
-        character.harm(10)
+    elif the_input.startswith(">selfharm"):
+        try:
+            harm_value = int(the_input[10::])
+            character.harm(harm_value)
+            print(f"Health is now {character.display_health()}")
+        except:
+            print("<An error occured.")
 
     # Buys an item from shop.json. First item in arrays is the price the second is the value.
     elif the_input.startswith(">buy"):
@@ -136,6 +141,8 @@ while True:
                 values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
                 character.pick_item(the_item_to_be_bought , values )
                 character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
+            else:
+                print("You don't have enough coins.")
         except KeyError:
             print("<That item doesn't exists at any one of our shops.")
 
