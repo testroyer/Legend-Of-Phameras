@@ -1,5 +1,3 @@
-#https://www.w3schools.com/python/default.asp
-
 class Character():
 
     #Blank arrays
@@ -69,4 +67,7 @@ class Character():
         for items in self.player_body:
             all_items.append(items)
         return all_items
+
+    def list_coins(self):
+        return self.player_inventory["Coins"][0]
 

@@ -16,7 +16,6 @@ def ToDo():
     -a shop catalog would be useful
     -what if it starts without a character ???
     -shop stock ??
-    -make one armor equipable.
     -make some changes to the 
 """
 """
@@ -49,7 +48,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">help", "equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
+command_array = [">list" , ">coins", ">help", "equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
@@ -77,6 +76,10 @@ while True:
             for item in character.list_body():
                 print(item)
 
+    #Displays your coins             
+    if the_input == ">coins":
+        print(f"You have {character.list_coins} coins.")
+
     #It does what it does, lists.
     elif the_input  == ">list":
         if character.character_inventory() != []:            
@@ -102,9 +105,12 @@ while True:
         try:
             wearable = the_input[7:]
             player_inventory = character.character_inventory()
-            if player_inventory[wearable][1] == 2:
+            if player_inventory[wearable][1] == 2 and player["isArmorEquipped"] == False:
                 character.equip_item(wearable)
+                player["isArmorEquipped"] = True
                 print(f"<Equipped {wearable}")
+            elif player["isArmorEquipped"] == True:
+                print("<You already have an armor equipped.")
             else:
                 print("<Please, you can't equip this")
         except KeyError:
@@ -115,9 +121,12 @@ while True:
         try:
             wearable = the_input[9:]
             player_body = character.character_body()
-            if player_body[wearable][1] == 2:
+            if player_body[wearable][1] == 2 and player["isArmorEquipped"] == True:
                 character.unequip_item(wearable)
+                player["isArmorEquipped"] = False
                 print(f"<Unequipped {wearable}")
+            elif player["isArmorEquipped"] == False:
+                print("<You don't have an armor equipped.")
             else:
                 print("<Please, you can't un-equip this")
         except KeyError:
@@ -145,6 +154,7 @@ while True:
                 values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
                 character.pick_item(the_item_to_be_bought , values )
                 character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
+                print(f">{the_item_to_be_bought} is successfully bought.")
             else:
                 print("You don't have enough coins.")
         except KeyError:
@@ -157,6 +167,7 @@ while True:
     elif the_input.startswith(">new character"):
         new_character = the_input[15:]
         data[0][new_character] = {
+            "isArmorEquipped" : False,
             "Health" : 100,
             "Body":{
                 

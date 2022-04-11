@@ -1,13 +1,9 @@
 [
     {
         "Larry": {
-            "Health": 120,
-            "Body": {
-                "Armor": [
-                    20,
-                    2
-                ]
-            },
+            "isArmorEquipped": false,
+            "Health": 100,
+            "Body": {},
             "Inventory": {
                 "Sword": [
                     40,
@@ -20,10 +16,15 @@
                 "Coins": [
                     90,
                     21
+                ],
+                "Armor": [
+                    20,
+                    2
                 ]
             }
         },
         "Amy": {
+            "isArmorEquipped": true,
             "Health": 100,
             "Body": {},
             "Inventory": {
