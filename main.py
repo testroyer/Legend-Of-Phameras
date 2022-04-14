@@ -10,7 +10,7 @@
 """
 def ToDo():
     -work()
-    -delete character()
+    -buying the same item twice
     -fight()
     -max health
     -a shop catalog would be useful
@@ -41,14 +41,14 @@ with open("shop.json" , "r") as f:
 while True:        
     try:
         selected_character = input("<Select Character: \n>")   
-        player , inventory , player_body = data[0][selected_character] , data[0][selected_character]["Inventory"] ,data[0][selected_character]["Body"]
+        player , inventory , player_body = data[0][selected_character] , data[0][selected_character]["Inventory"], data[0][selected_character]["Body"]
         
         break
     except KeyError:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">coins", ">help", "equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm"]      
+command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm" , ">delete character"]      
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
@@ -87,7 +87,7 @@ while True:
         else:
             print("<You have nothing.")
 
-    elif the_input.startswith(">select"):                   #Created for character selection. MAYBE: Write a function that lists characters instead of inventory. 
+    elif the_input.startswith(">select"):          #Created for character selection. MAYBE: Write a function that lists characters instead of inventory. 
         try:
             character_selection = the_input[8:]
             inventory = data[0][character_selection]["Inventory"]
@@ -162,8 +162,26 @@ while True:
 
     #delete character -> If entered nothing next to ">delete character" displays an error message else if there is an entered character name deletes that character. Makes sure to get confirmation.
     elif the_input.startswith(">delete character"):
-        character_to_be_deleted = the_input[17:]
+        try:
+            yes_or_no = input("<Are you sure Y/N \n>")
+            if yes_or_no.lower == "n":
+                continue
+            else:
+                pass
+            character_to_be_deleted = the_input[18:]
+            data[0].pop(character_to_be_deleted)
+            character_selection = input("Select a character \n>")
+            inventory = data[0][character_selection]["Inventory"]
+            player = data[0][character_selection]
+            player_body = data[0][character_selection]["Body"]
+            character = Character(player=player,player_inventory=inventory, player_body=player_body)
+            print(f"<{character_selection} selected")
+        except KeyError:
+            print("That character doesn't exist")
+        except:
+            print("An error occured.")
 
+    #Character creator, creates a new character and saves the inventory file.
     elif the_input.startswith(">new character"):
         new_character = the_input[15:]
         data[0][new_character] = {
@@ -185,7 +203,8 @@ while True:
         json_saver(json_string=json_string)
         print("<Character created successfully")
 
-    elif the_input.startswith(">drop"):         #Drops an item. I disabled dropping coins because it's dumb to drop coins
+    #Drops an item. I disabled dropping coins because it's dumb to drop coins
+    elif the_input.startswith(">drop"):
         try:
             the_item = the_input[6:]
             if the_item == "Coins":
@@ -203,6 +222,8 @@ while True:
             sys.exit("<Game exit")
         elif yes_or_no.lower() == "n":
             continue
+        else:
+            print("Please enter a valid parameter.")
 
     #Saving function    
     elif the_input == ">save":

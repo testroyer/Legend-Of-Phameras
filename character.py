@@ -30,7 +30,7 @@ class Character():
 
     #displays name. Probably broken
     def character_name(self):
-        return print(self.player_inventory)
+        return print(self.player)
     
     #Function for getting player inventory.
     def character_inventory(self):
