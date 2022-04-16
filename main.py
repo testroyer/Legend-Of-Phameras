@@ -35,11 +35,16 @@ with open("inventory.json" , "r") as f:
 #Loads json data for shopping
 with open("shop.json" , "r") as f:             
     shop = json.load(f)
-    
+
+def character_lister(data):
+    print("<Available characters:")
+    for characters in data[0]:
+        print(characters)
 
 #Makes you choose a character at the start. While is needed for try-expect
 while True:        
     try:
+        character_lister(data)
         selected_character = input("<Select Character: \n>")   
         player , inventory , player_body = data[0][selected_character] , data[0][selected_character]["Inventory"], data[0][selected_character]["Body"]
         
