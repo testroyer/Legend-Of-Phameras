@@ -9,14 +9,14 @@
 
 """
 def ToDo():
-    -work()
-    -buying the same item twice
-    -fight()
-    -max health
-    -a shop catalog would be useful
-    -what if it starts without a character ???
-    -shop stock ??
-    -make some changes to the 
+    +work()
+    !buying the same item twice
+    +fight()
+    +max health
+    +a shop catalog would be useful
+    !what if it starts without a character
+    -make some changes to the character class (Edit the functions)
+    +sword equipping
 """
 """
 comment: this project looks cool
