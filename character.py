@@ -50,13 +50,13 @@ class Character():
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
     #Will ad the values for wearable, eatable, fightable.
-    def equip_item(self , item):
+    def equip_armor(self , item):
         self.player_body[item] = self.player_inventory[item]
         self.player["Health"] += self.player_inventory[item][0]
         self.player_inventory.pop(item)
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
-    def unequip_item(self , item):
+    def unequip_armor(self , item):
         self.player_inventory[item] = self.player_body[item]
         self.player["Health"] -= self.player_inventory[item][0]
         self.player_body.pop(item)
@@ -71,3 +71,10 @@ class Character():
     def list_coins(self):
         return self.player_inventory["Coins"][0]
 
+    def equip_item(self , item):
+        self.player_body[item] = self.player_inventory[item]
+        self.player_inventory.pop(item)
+
+    def unequip_item(self, item):
+        self.player_inventory[item] = self.player_body[item]
+        self.player_body.pop(item)

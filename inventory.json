@@ -2,13 +2,10 @@
     {
         "Larry": {
             "isArmorEquipped": false,
+            "isWeaponEquipped": false,
             "Health": 100,
             "Body": {},
             "Inventory": {
-                "Sword": [
-                    40,
-                    1
-                ],
                 "Food": [
                     20,
                     0
@@ -20,6 +17,10 @@
                 "Armor": [
                     20,
                     2
+                ],
+                "Sword": [
+                    40,
+                    1
                 ]
             }
         }

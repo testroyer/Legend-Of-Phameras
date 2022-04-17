@@ -16,7 +16,6 @@ def ToDo():
     +a shop catalog would be useful
     !what if it starts without a character
     -make some changes to the character class (Edit the functions)
-    +sword equipping
 """
 """
 comment: this project looks cool
@@ -108,34 +107,42 @@ while True:
     #Equips an item. I must add a property which makes an item equipable or not.
     elif the_input.startswith(">equip"):             
         try:
-            wearable = the_input[7:]
+            item = the_input[7:]
             player_inventory = character.character_inventory()
-            if player_inventory[wearable][1] == 2 and player["isArmorEquipped"] == False:
-                character.equip_item(wearable)
+            if player_inventory[item][1] == 2 and player["isArmorEquipped"] == False:
+                character.equip_armor(item)
                 player["isArmorEquipped"] = True
-                print(f"<Equipped {wearable}")
+                print(f"<{item} has been worn.")
+            if player_inventory[item][1] == 1 and player["isWeaponEquipped"] == False:
+                character.equip_item(item)
+                player["isWeaponEquipped"] = True
+                print(f"<Equipped {item}")
             elif player["isArmorEquipped"] == True:
                 print("<You already have an armor equipped.")
+            elif player["isWeaponEquipped"] == True:
+                print("<You already have an weapon equipped.")
             else:
                 print("<Please, you can't equip this")
         except KeyError:
-            print("<Please select a valid wearable")
+            print("<Please select a valid item")
 
     #Same thing. Unequips an item. I must add a property which makes an item equipable or not.
     elif the_input.startswith(">unequip"):             
         try:
-            wearable = the_input[9:]
+            item = the_input[9:]
             player_body = character.character_body()
-            if player_body[wearable][1] == 2 and player["isArmorEquipped"] == True:
-                character.unequip_item(wearable)
+            if player_body[item][1] == 2 and player["isArmorEquipped"] == True:
+                character.unequip_armor(item)
                 player["isArmorEquipped"] = False
-                print(f"<Unequipped {wearable}")
-            elif player["isArmorEquipped"] == False:
-                print("<You don't have an armor equipped.")
+                print(f"<Removed {item}")
+            if player_body[item][1] == 1 and player["isWeaponEquipped"] == True:
+                character.unequip_item(item)
+                player["isWeaponEquipped"] = False
+                print(f"<Unequipped {item}")
             else:
                 print("<Please, you can't un-equip this")
         except KeyError:
-            print("<Please select a valid wearable")
+            print("<Please select a valid item")
 
     #health -> displays health
     elif the_input == ">health":
@@ -191,6 +198,7 @@ while True:
         new_character = the_input[15:]
         data[0][new_character] = {
             "isArmorEquipped" : False,
+            "isWeaponEquipped": False,
             "Health" : 100,
             "Body":{
                 
