@@ -6,9 +6,9 @@
                      10 March 2022, 16:47:16
 ========================================================================
 """
-
 """
 def ToDo():
+    +eat()
     +work()
     !buying the same item twice
     +fight()
@@ -21,6 +21,25 @@ def ToDo():
 comment: this project looks cool
 -Sir Raus0n
 """
+"""
+Array documentation:
+
+[
+    (price,) -> Price at the shop.
+    value, -> Value of an item
+    state ->if 0:
+                eatable
+            if 1:
+                weapon
+            if 2:
+                wearable
+            if 21:
+                special item
+
+]
+"""
+
+
 
 #Imports
 from character import Character
@@ -52,7 +71,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">wear" , ">selfharm" , ">delete character"]      
+command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]      
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
@@ -113,16 +132,21 @@ while True:
                 character.equip_armor(item)
                 player["isArmorEquipped"] = True
                 print(f"<{item} has been worn.")
+                continue
             if player_inventory[item][1] == 1 and player["isWeaponEquipped"] == False:
                 character.equip_item(item)
                 player["isWeaponEquipped"] = True
                 print(f"<Equipped {item}")
+                continue
             elif player["isArmorEquipped"] == True:
                 print("<You already have an armor equipped.")
+                continue
             elif player["isWeaponEquipped"] == True:
                 print("<You already have an weapon equipped.")
+                continue
             else:
                 print("<Please, you can't equip this")
+                continue
         except KeyError:
             print("<Please select a valid item")
 
@@ -135,12 +159,15 @@ while True:
                 character.unequip_armor(item)
                 player["isArmorEquipped"] = False
                 print(f"<Removed {item}")
+                continue
             if player_body[item][1] == 1 and player["isWeaponEquipped"] == True:
                 character.unequip_item(item)
                 player["isWeaponEquipped"] = False
                 print(f"<Unequipped {item}")
+                continue
             else:
                 print("<Please, you can't un-equip this")
+                continue
         except KeyError:
             print("<Please select a valid item")
 
