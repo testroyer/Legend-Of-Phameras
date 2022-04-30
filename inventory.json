@@ -3,6 +3,7 @@
         "Larry": {
             "isArmorEquipped": false,
             "isWeaponEquipped": false,
+            "maxHealth": 100,
             "Health": 100,
             "Body": {},
             "Inventory": {

@@ -53,12 +53,14 @@ class Character():
     def equip_armor(self , item):
         self.player_body[item] = self.player_inventory[item]
         self.player["Health"] += self.player_inventory[item][0]
+        self.player["maxHealth"] += self.player_inventory[item][0]
         self.player_inventory.pop(item)
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
     def unequip_armor(self , item):
         self.player_inventory[item] = self.player_body[item]
         self.player["Health"] -= self.player_inventory[item][0]
+        self.player["maxHealth"] -= self.player_inventory[item][0]
         self.player_body.pop(item)
     
     #Lists what is on you
@@ -78,3 +80,15 @@ class Character():
     def unequip_item(self, item):
         self.player_inventory[item] = self.player_body[item]
         self.player_body.pop(item)
+
+    def eat(self, food):
+        if self.player_inventory[food][1] == 0:
+            if self.player["maxHealth"] > self.display_health() + self.player_inventory[food][0]:
+                self.player["Health"] += self.player_inventory[food][0]
+            elif self.player["maxHealth"] < self.display_health() + self.player_inventory[food][0]:
+                self.player["Health"] = self.player["maxHealth"]
+            self.player_inventory.pop(food)
+            print(f"Eaten {food}, health is now {self.display_health()}")
+        elif self.player_inventory[food][1] != 0:
+            print("You cannot eat this.")
+            

@@ -8,7 +8,6 @@
 """
 """
 def ToDo():
-    +eat()
     +work()
     !buying the same item twice
     +fight()
@@ -16,6 +15,9 @@ def ToDo():
     +a shop catalog would be useful
     !what if it starts without a character
     -make some changes to the character class (Edit the functions)
+    !what if we remove armor and health goes zero
+    +die
+    +attack variable end sword equipping
 """
 """
 comment: this project looks cool
@@ -101,7 +103,7 @@ while True:
 
     #Displays your coins             
     if the_input == ">coins":
-        print(f"You have {character.list_coins} coins.")
+        print(f"You have {character.list_coins()} coins.")
 
     #It does what it does, lists.
     elif the_input  == ">list":
@@ -171,6 +173,14 @@ while True:
         except KeyError:
             print("<Please select a valid item")
 
+    #Eats a food. Nearly the whole command was written in the Character class. 
+    elif the_input.startswith(">eat"):
+        try:
+            food = the_input[5:]
+            character.eat(food)
+        except KeyError:
+            print("Please select a valid item")
+
     #health -> displays health
     elif the_input == ">health":
         print(f"Health is {character.display_health()}")
@@ -189,6 +199,9 @@ while True:
         try:
             the_item_to_be_bought = the_input[5:]
             character_inventory = character.character_inventory()
+            if the_item_to_be_bought in character_inventory and the_item_to_be_bought != "Food":
+                print("You already have this item")
+                continue
             if character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
                 values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
                 character.pick_item(the_item_to_be_bought , values )
@@ -226,6 +239,7 @@ while True:
         data[0][new_character] = {
             "isArmorEquipped" : False,
             "isWeaponEquipped": False,
+            "maxHealth" : 100,
             "Health" : 100,
             "Body":{
                 
