@@ -9,7 +9,7 @@
 """
 def ToDo():
     +work()
-    !buying the same item twice
+    !buying the same food twice
     +fight()
     +max health
     +a shop catalog would be useful
