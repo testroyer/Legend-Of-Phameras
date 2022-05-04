@@ -86,7 +86,11 @@ print("<Boot successfull")
 
 #I believe I can make this one function and then import it
 #Checks input every time. I find it a bit dumb to make it this way
-while True:                 
+while True:  
+    if character.display_health() == 0:
+        print("<You're dead. Game Over. If you want to continue from your last save simply restart the game.")
+        sys.exit("<Game exit.")
+
     the_input = input()
 
     #Sorts command array in alphabetical order and prints it
@@ -103,7 +107,8 @@ while True:
 
     #Displays your coins             
     if the_input == ">coins":
-        print(f"You have {character.list_coins()} coins.")
+        character_coins = character.list_coins()
+        print(f"You have {character_coins} coins.")
 
     #It does what it does, lists.
     elif the_input  == ">list":
