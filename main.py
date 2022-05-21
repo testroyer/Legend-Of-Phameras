@@ -41,7 +41,8 @@ Array documentation:
 ]
 """
 
-
+#The formula that will be used laeter on to calculate the damage which will be inflicted to enemy.
+damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
 
 #Imports
 from character import Character
