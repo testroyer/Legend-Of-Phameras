@@ -53,17 +53,13 @@ class Character():
     def equip_armor(self , item):
         self.player_body[item] = self.player_inventory[item]
         defenseCalc = lambda base , value : base + (base * (value / 100))
-        self.player["DefenseBase"] = defenseCalc(self.player["DefenseBase"], self.player_inventory[item][0])
-        """self.player["Health"] += self.player_inventory[item][0]
-        self.player["maxHealth"] += self.player_inventory[item][0]"""
+        self.player["DefenseBase"] = round(defenseCalc(self.player["DefenseBase"], self.player_inventory[item][0]))
         self.player_inventory.pop(item)
 
     #Adds an armr to body. Adds the value to the health then removes it from Inventory
     def unequip_armor(self , item):
         self.player_inventory[item] = self.player_body[item]
         self.player["DefenseBase"] = 20
-        """self.player["Health"] -= self.player_inventory[item][0]
-        self.player["maxHealth"] -= self.player_inventory[item][0]"""
         self.player_body.pop(item)
     
     #Lists what is on you
@@ -95,4 +91,6 @@ class Character():
         elif self.player_inventory[food][1] != 0:
             print("You cannot eat this.")
 
+    def get_defense(self):
+        return self.player["DefenseBase"]
             
