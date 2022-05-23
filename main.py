@@ -242,9 +242,12 @@ while True:
     #Character creator, creates a new character and saves the inventory file.
     elif the_input.startswith(">new character"):
         new_character = the_input[15:]
+        #Character initializer
         data[0][new_character] = {
             "isArmorEquipped" : False,
             "isWeaponEquipped": False,
+            "AttackBase" : 15,
+            "DefenseBase" : 20,
             "maxHealth" : 100,
             "Health" : 100,
             "Body":{
