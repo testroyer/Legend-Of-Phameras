@@ -118,6 +118,9 @@ while True:
     elif the_input == ">defense":
         print(f"Your defense value is {character.get_defense()}.")
 
+    elif the_input == ">attack":
+        print(f"Your attack value is {character.get_attack()}.")
+
     elif the_input.startswith(">select"):          #Created for character selection. MAYBE: Write a function that lists characters instead of inventory. 
         try:
             character_selection = the_input[8:]

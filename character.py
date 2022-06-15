@@ -74,10 +74,13 @@ class Character():
 
     def equip_item(self , item):
         self.player_body[item] = self.player_inventory[item]
+        attackBase = self.player["AttackBase"]
+        self.player["AttackBase"] = int(round(attackBase + (attackBase * (self.player_inventory[item][0] / 100))))
         self.player_inventory.pop(item)
 
     def unequip_item(self, item):
         self.player_inventory[item] = self.player_body[item]
+        self.player["AttackBase"] = 15
         self.player_body.pop(item)
 
     def eat(self, food):
@@ -94,3 +97,5 @@ class Character():
     def get_defense(self):
         return self.player["DefenseBase"]
             
+    def get_attack(self):
+        return self.player["AttackBase"]
