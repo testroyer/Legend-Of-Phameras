@@ -11,13 +11,10 @@ def ToDo():
     +work()
     !buying the same food twice
     +fight()
-    +max health
     +a shop catalog would be useful
     !what if it starts without a character
-    -make some changes to the character class (Edit the functions)
     !what if we remove armor and health goes zero
-    +die
-    +attack variable end sword equipping
+    +sword equipping
 """
 """
 comment: this project looks cool
