@@ -1,24 +1,30 @@
 [
     {
         "Larry": {
+            "isArmorEquipped": false,
+            "isWeaponEquipped": false,
+            "AttackBase": 15,
+            "DefenseBase": 20,
+            "maxHealth": 100,
             "Health": 100,
-            "Inventory":{
-                "Sword": 40,
-                "Food": 20,
-                "Coins": 0
-            }
-            
-        },
-        "Simon": {
-            "Health": 100,
-            "Inventory":{
-                "Coins": 50
-            }
-        },
-        "Jason": {
-            "Health" : 100,
-            "Inventory" :{
-                "Coins": 0
+            "Body": {},
+            "Inventory": {
+                "Food": [
+                    20,
+                    0
+                ],
+                "Coins": [
+                    60,
+                    21
+                ],
+                "Armor": [
+                    20,
+                    2
+                ],
+                "Sword": [
+                    40,
+                    1
+                ]
             }
         }
     }

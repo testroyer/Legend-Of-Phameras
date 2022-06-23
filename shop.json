@@ -1,6 +1,16 @@
 [
     {
-        "Sword" : [20 , 40],
-        "Food": [10 , 20]
+        "Sword" : [20 , 40 , 1],
+        "Food": [10 , 20 , 0],
+        "Armor": [10 , 20 , 2],
+        "Saltan Bow":[100 , 20 , 1],
+        "Ambitipos Sword": [75 , 20 , 1],
+        "Apple":[10 , 10 , 0],
+        "Forged Chain Armor" : [50 , 50 , 2],
+        "Wizard Robe": [70 , 80 ,2],
+        "Saworge Axe": [45 , 50 ,1],
+        "Maglate's Powerful Armor":[250 , 100 , 2],
+        "Magic Wand":[125 , 45 , 1],
+        "Magic Sword":[125 , 45 , 1]
     }
 ]
