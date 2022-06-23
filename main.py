@@ -11,7 +11,6 @@ def ToDo():
     +work()
     !buying the same food twice
     +fight()
-    +a shop catalog would be useful
     !what if it starts without a character
 """
 """
@@ -201,6 +200,13 @@ while True:
             print(f"Health is now {character.display_health()}")
         except:
             print("<An error occured.")
+
+
+    elif the_input == ">shop":
+        print("<These are the items on sale:")
+        shop_hash = shop[0]
+        for items in shop_hash:
+            print(items)
 
     # Buys an item from shop.json. First item in arrays is the price and the second one is the value.
     elif the_input.startswith(">buy"):
