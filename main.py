@@ -13,8 +13,6 @@ def ToDo():
     +fight()
     +a shop catalog would be useful
     !what if it starts without a character
-    !what if we remove armor and health goes zero
-    +sword equipping
 """
 """
 comment: this project looks cool
@@ -42,6 +40,7 @@ Array documentation:
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
 
 #Imports
+from urllib.parse import ParseResultBytes
 from character import Character
 import sys
 import json
@@ -104,7 +103,7 @@ while True:
                 print(item)
 
     #Displays your coins             
-    if the_input == ">coins":
+    elif the_input == ">coins":
         character_coins = character.list_coins()
         print(f"You have {character_coins} coins.")
 
@@ -149,10 +148,10 @@ while True:
                 player["isWeaponEquipped"] = True
                 print(f"<Equipped {item}")
                 continue
-            elif player["isArmorEquipped"] == True:
+            elif player_inventory[item][1] == 2 and player["isArmorEquipped"] == True:
                 print("<You already have an armor equipped.")
                 continue
-            elif player["isWeaponEquipped"] == True:
+            elif player_inventory[item][1] == 1 and player["isWeaponEquipped"] == True:
                 print("<You already have an weapon equipped.")
                 continue
             else:
