@@ -9,7 +9,7 @@
 """
 def ToDo():
     +work()
-    !buying the same food twice
+    !buying the same food twice ---> Swept under carpet
     +fight()
     !what if it starts without a character
 """
@@ -206,14 +206,14 @@ while True:
         print("<These are the items on sale:")
         shop_hash = shop[0]
         for items in shop_hash:
-            print(items)
+            print(f"{items} : {shop_hash[items][0]}")
 
     # Buys an item from shop.json. First item in arrays is the price and the second one is the value.
     elif the_input.startswith(">buy"):
         try:
             the_item_to_be_bought = the_input[5:]
             character_inventory = character.character_inventory()
-            if the_item_to_be_bought in character_inventory and the_item_to_be_bought != "Food":
+            if the_item_to_be_bought in character_inventory:
                 print("You already have this item")
                 continue
             if character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
