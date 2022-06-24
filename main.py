@@ -65,6 +65,11 @@ with open("inventory.json" , "r") as f:
 with open("shop.json" , "r") as f:             
     shop = json.load(f)
 
+#Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
+def json_saver(json_string):                                
+    with open("inventory.json" , "w") as f:
+            f.write(json_string)
+
 def character_lister(data):
     print("<Available characters:")
     for characters in data[0]:
@@ -73,6 +78,31 @@ def character_lister(data):
 #Makes you choose a character at the start. While is needed for try-expect
 while True:        
     try:
+        if data == [{}]:
+            print("<You don't have any characters. You must create one. Please enter a name for your character")
+            new_character = input(">")
+            data[0][new_character] = {
+                "isArmorEquipped" : False,
+                "isWeaponEquipped": False,
+                "AttackBase" : 15,
+                "DefenseBase" : 20,
+                "maxHealth" : 100,
+                "Health" : 100,
+                "Body":{
+                    
+                },
+                "Inventory" : {
+                    "Coins" : [0 , 21]
+                }   
+            
+            }
+            player = data[0][new_character]
+            inventory = data[0][new_character]["Inventory"]
+            player_body = data[0][new_character]["Body"]    #I made a body for wearing armor
+            character = Character(player = player ,player_inventory = inventory , player_body=player_body)
+            json_string = json.dumps(data , indent=4)
+            json_saver(json_string=json_string)
+        print("<Character created successfully")
         character_lister(data)
         selected_character = input("<Select Character: \n>")   
         player , inventory , player_body = data[0][selected_character] , data[0][selected_character]["Inventory"], data[0][selected_character]["Body"]
