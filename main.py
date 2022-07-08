@@ -24,7 +24,6 @@ def ToDo():
     +work()
     !buying the same food twice ---> Swept under carpet
     +fight()
-    !what if it starts without a character
 """
 """
 comment: this project looks cool
