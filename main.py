@@ -47,16 +47,20 @@ Array documentation:
 ]
 """
 
+#dumped variables
 #The formula that will be used laeter on to calculate the damage which will be inflicted to enemy.
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
+inventoryPath = "./Json-Files/inventory.json"
+
 
 #Imports
 from character import Character
 import sys
 import json
 
+
 #Loads json data for inventory
-with open("./Json-Files/inventory.json" , "r") as f:             
+with open(inventoryPath , "r") as f:             
     data = json.load(f)
 
 #Loads json data for shopping
@@ -65,8 +69,8 @@ with open("./Json-Files/shop.json" , "r") as f:
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
-    with open("./Json-Files/inventory.json" , "w") as f:
-            f.write(json_string)
+    with open("./Json-Files/inventory.json" , "w+") as c:
+        c.write(json_string)
 
 def character_lister(data):
     print("<Available characters:")
