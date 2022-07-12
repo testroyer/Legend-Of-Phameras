@@ -51,22 +51,21 @@ Array documentation:
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
 
 #Imports
-from urllib.parse import ParseResultBytes
 from character import Character
 import sys
 import json
 
 #Loads json data for inventory
-with open("inventory.json" , "r") as f:             
+with open("./Json-Files/inventory.json" , "r") as f:             
     data = json.load(f)
 
 #Loads json data for shopping
-with open("shop.json" , "r") as f:             
+with open("./Json-Files/shop.json" , "r") as f:             
     shop = json.load(f)
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
-    with open("inventory.json" , "w") as f:
+    with open("./Json-Files/inventory.json" , "w") as f:
             f.write(json_string)
 
 def character_lister(data):
