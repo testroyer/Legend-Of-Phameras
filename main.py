@@ -21,6 +21,7 @@
 
 """
 def ToDo():
+    !Creates a new inventory file when creating
     +work()
     !buying the same food twice ---> Swept under carpet
     +fight()
