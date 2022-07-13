@@ -50,17 +50,15 @@ Array documentation:
 #dumped variables
 #The formula that will be used laeter on to calculate the damage which will be inflicted to enemy.
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
-inventoryPath = "./Json-Files/inventory.json"
-
 
 #Imports
-from character import Character
+from classes.character import Character
 import sys
 import json
 
 
 #Loads json data for inventory
-with open(inventoryPath , "r") as f:             
+with open("./Json-Files/inventory.json" , "r") as f:             
     data = json.load(f)
 
 #Loads json data for shopping
