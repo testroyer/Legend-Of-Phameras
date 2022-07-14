@@ -21,6 +21,7 @@
 
 """
 def ToDo():
+    !Creates a new inventory file when creating
     +work()
     !buying the same food twice ---> Swept under carpet
     +fight()
@@ -47,27 +48,28 @@ Array documentation:
 ]
 """
 
+#dumped variables
 #The formula that will be used laeter on to calculate the damage which will be inflicted to enemy.
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
 
 #Imports
-from urllib.parse import ParseResultBytes
-from character import Character
+from classes.character import Character
 import sys
 import json
 
+
 #Loads json data for inventory
-with open("inventory.json" , "r") as f:             
+with open("./Json-Files/inventory.json" , "r") as f:             
     data = json.load(f)
 
 #Loads json data for shopping
-with open("shop.json" , "r") as f:             
+with open("./Json-Files/shop.json" , "r") as f:             
     shop = json.load(f)
 
 #Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
 def json_saver(json_string):                                
-    with open("inventory.json" , "w") as f:
-            f.write(json_string)
+    with open("./Json-Files/inventory.json" , "w+") as c:
+        c.write(json_string)
 
 def character_lister(data):
     print("<Available characters:")
@@ -111,13 +113,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]      
-
-#Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
-def json_saver(json_string):                                
-    with open("inventory.json" , "w") as f:
-            f.write(json_string)
-    
+command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]          
 
 character = Character(player = player , player_inventory = inventory , player_body=player_body)
 print("<Boot successfull")

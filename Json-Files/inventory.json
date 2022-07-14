@@ -2,12 +2,17 @@
     {
         "Larry": {
             "isArmorEquipped": false,
-            "isWeaponEquipped": false,
-            "AttackBase": 15,
+            "isWeaponEquipped": true,
+            "AttackBase": 21,
             "DefenseBase": 20,
             "maxHealth": 100,
             "Health": 100,
-            "Body": {},
+            "Body": {
+                "Sword": [
+                    40,
+                    1
+                ]
+            },
             "Inventory": {
                 "Food": [
                     20,
@@ -20,10 +25,6 @@
                 "Armor": [
                     20,
                     2
-                ],
-                "Sword": [
-                    40,
-                    1
                 ]
             }
         }
