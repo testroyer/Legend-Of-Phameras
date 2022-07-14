@@ -113,13 +113,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]      
-
-#Saver function made for saving json file. I didn't make a copy of this for the shop.json because it is unnecessary
-def json_saver(json_string):                                
-    with open("inventory.json" , "w") as f:
-            f.write(json_string)
-    
+command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]          
 
 character = Character(player = player , player_inventory = inventory , player_body=player_body)
 print("<Boot successfull")
