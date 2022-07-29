@@ -53,8 +53,10 @@ Array documentation:
 damageCalc = lambda b,c ,d : (b + (b * (c / 100))) * ((100 - d) / 100)
 
 #Imports
+from math import pi
 from classes.character import Character
 import sys
+import time
 import json
 
 
@@ -169,6 +171,16 @@ while True:
             print("<Please select a valid character name")
 
     #work   -> Gives you random or entered amount of coins. A value between 1 and 20. maybe we can add a delay or something like that.
+    elif the_input.startswith(">work"):
+        try:        
+            work_time = int(the_input[6:])
+            time.sleep(work_time)
+            gain = round(work_time*pi)
+            player_inventory = character.character_inventory()
+            player_inventory["Coins"][0] += gain 
+            print(f">You gained {gain} coins")
+        except ValueError:
+            print(">Please determine a time to work for.")
 
     #Equips an item. I must add a property which makes an item equipable or not.
     elif the_input.startswith(">equip"):             
