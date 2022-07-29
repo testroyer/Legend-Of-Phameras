@@ -115,7 +115,7 @@ while True:
         print("<Please enter a valid character name")
 
 #Created for later business. I'm thinking of an error message like "Please write a valid command". Seems it could be done with a for loop checking if the command startswith or just use else.
-command_array = [">list" , ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]          
+command_array = [">list" ,">work", ">coins", ">help", ">equip", ">unequip" , ">select", ">buy" , ">new character" , ">drop" , ">pick" , ">exit" , ">save" , ">info" , ">health" , ">list body" , ">selfharm" , ">delete character"]          
 
 character = Character(player = player , player_inventory = inventory , player_body=player_body)
 print("<Boot successfull")
@@ -268,7 +268,7 @@ while True:
                 continue
             if character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
                 values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
-                character.pick_item(the_item_to_be_bought , values )
+                character.pick_item(the_item_to_be_bought , values)
                 character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
                 print(f">{the_item_to_be_bought} is successfully bought.")
             else:
