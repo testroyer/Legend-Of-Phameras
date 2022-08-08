@@ -1,0 +1,16 @@
+[
+    {
+        "Goblin" : {
+            "Health" : 80,
+            "Attack" : 18, 
+            "Defense" : 18,
+            "Loot" : {
+                "Coins" : [[20 , 50] , 21],
+                "Forged Chain Armor" : [50 , 2],
+                "Elixir" : [25 , 0],
+                "Goblin Sword" : [45 , 1]
+            }
+
+        }
+    }
+]
