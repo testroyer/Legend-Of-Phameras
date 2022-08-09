@@ -89,7 +89,11 @@ class Character():
                 self.player["Health"] += self.player_inventory[food][0]
             elif self.player["maxHealth"] < self.display_health() + self.player_inventory[food][0]:
                 self.player["Health"] = self.player["maxHealth"]
-            self.player_inventory.pop(food)
+
+            if self.player_inventory[food][2] == 1:
+                self.player_inventory.pop(food)
+            elif self.player_inventory[food][2] >= 1:
+                self.player_inventory[food][2] -= 1
             print(f"Eaten {food}, health is now {self.display_health()}")
         elif self.player_inventory[food][1] != 0:
             print("You cannot eat this.")

@@ -44,6 +44,7 @@ Array documentation:
                 wearable
             if 21:
                 special item
+    (count) -> eatable values have count the them
 
 ]
 """
@@ -263,11 +264,18 @@ while True:
         try:
             the_item_to_be_bought = the_input[5:]
             character_inventory = character.character_inventory()
-            if the_item_to_be_bought in character_inventory:
+            if the_item_to_be_bought in character_inventory and character_inventory[the_item_to_be_bought][1] != 0:
                 print("You already have this item")
                 continue
-            if character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
-                values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
+            elif the_item_to_be_bought in character_inventory and character_inventory[the_item_to_be_bought][1] == 0:
+                character_inventory[the_item_to_be_bought][2] += 1
+                character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
+                print(f">{the_item_to_be_bought} is successfully bought.")
+            elif character_inventory["Coins"][0] > shop[0][the_item_to_be_bought][0]:
+                if shop[0][the_item_to_be_bought][2] == 0:
+                    values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2] , 1]
+                else:
+                    values = [shop[0][the_item_to_be_bought][1] , shop[0][the_item_to_be_bought][2]]
                 character.pick_item(the_item_to_be_bought , values)
                 character_inventory["Coins"][0] -= shop[0][the_item_to_be_bought][0]
                 print(f">{the_item_to_be_bought} is successfully bought.")

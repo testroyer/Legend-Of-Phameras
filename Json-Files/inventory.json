@@ -9,12 +9,8 @@
             "Health": 100,
             "Body": {},
             "Inventory": {
-                "Food": [
-                    20,
-                    0
-                ],
                 "Coins": [
-                    60,
+                    70,
                     21
                 ],
                 "Armor": [
@@ -24,6 +20,10 @@
                 "Sword": [
                     40,
                     1
+                ],
+                "Forged Chain Armor": [
+                    50,
+                    2
                 ]
             }
         }
