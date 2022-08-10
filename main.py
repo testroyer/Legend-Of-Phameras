@@ -26,8 +26,7 @@ def ToDo():
 """
 comment: this project looks cool
 -Sir Raus0n
-"""
-"""
+
 Array documentation:
 
 [
@@ -47,8 +46,9 @@ Array documentation:
 """
 
 #dumped variables
-#The formula that will be used laeter on to calculate the damage which will be inflicted to enemy.
-damageCalc = lambda base, attack ,defense : (base + (base * (attack / 100))) * ((100 - defense) / 100)
+#The formula that will be used later on to calculate the damage which will be inflicted to enemy.
+#The problem with this is that it is certain almost everytime
+damageCalc = lambda base, attack ,defense : (base + (base * (attack / 100))) * ((100 - defense) / 100) # +- %5 
 
 #Imports
 from math import pi
