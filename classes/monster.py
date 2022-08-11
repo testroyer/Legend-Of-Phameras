@@ -1,5 +1,4 @@
 import random
-from classes.character import Character
 
 class Monster():
     health = None
@@ -34,6 +33,6 @@ class Monster():
     def get_defense(self):
         return self.defense
 
-    def attack_player(self, player:Character) -> int:
+    def attack_player(self, player) -> int:
         player_defense = player.get_defense()
-        return round((self.attack * ((100 - player_defense) / 100)) * ((random.randint(95, 105)) / 100 ))
+        player.player["Health"] -= round((((self.attack * ((100 - player_defense) / 100)) * (random.randint(75, 150))) / 100))

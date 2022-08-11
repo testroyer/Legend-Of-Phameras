@@ -1,15 +1,21 @@
+import random
+
 class Character():
 
     #Blank arrays
     player_inventory = []
     player = []
     player_body = []
-
+    attack = 0
+    health = 0
+    defense = 0
     #init
     def __init__(self , player , player_inventory , player_body) -> None:
         self.player_inventory = player_inventory
         self.player_body = player_body
         self.player = player
+        self.attack = player["AttackBase"]
+        self.health = player["Health"]
 
     #Lists every item in inventory
     def list_inventory(self):
@@ -103,3 +109,7 @@ class Character():
             
     def get_attack(self):
         return self.player["AttackBase"]
+
+    def attack_monster(self, monster):
+        monster_defense = monster.defense
+        monster.health -= round((((self.attack * ((100 - monster_defense) / 100)) * (random.randint(75, 150))) / 100))

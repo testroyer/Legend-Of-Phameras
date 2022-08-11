@@ -21,7 +21,6 @@ inventory = char[0]["Larry"]["Inventory"]
 player_body = char[0]["Larry"]["Body"]    #I made a body for wearing armor
 character = Character(player = player ,player_inventory = inventory , player_body=player_body)
 
-
-print(monster.attack_player(character))
-
+character.attack_monster(monster)
+print(monster.health)
 #C:\Users\alper\Desktop\VS_Code\Python\Legend of Phameras\Legend-Of-Phameras\Json-Files
