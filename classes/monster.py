@@ -33,6 +33,6 @@ class Monster():
     def get_defense(self):
         return self.defense
 
-    def attack_player(self, player) -> int:
+    def attack_player(self, player):
         player_defense = player.get_defense()
         player.player["Health"] -= round((((self.attack * ((100 - player_defense) / 100)) * (random.randint(75, 150))) / 100))
